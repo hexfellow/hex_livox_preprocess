@@ -1,0 +1,29 @@
+<!--#######################################-->
+<!-- Copyright (c) 2024  Dong Zhaorui.     -->
+<!-- All rights reserved.                  -->
+<!-- Author: Dong Zhaorui 847235539@qq.com -->
+<!-- Date  : 2024-05-12                    -->
+<!--#######################################-->
+
+<launch>
+    <arg name="sim" default="true" />
+    <param name="/use_sim_time" value="$(arg sim)" />
+
+    <!-- undistort -->
+    <node name="hex_livox_preprocess" pkg="hex_livox_preprocess" type="hex_livox_preprocess" output="screen" >
+        <!-- parameter -->
+        <rosparam file="$(find hex_livox_preprocess)/config/ros1/hex_livox_preprocess.yaml"/>
+        <!-- subscribe -->
+        <remap from="/lidar" to="/livox/lidar" />
+        <remap from="/imu" to="/livox/imu" />
+        <remap from="/odom" to="/odom" />
+        <!-- publish -->
+        <remap from="/raw_cloud" to="/raw_cloud" />
+        <remap from="/processed_cloud" to="/processed_cloud" />
+    </node>
+
+    <!-- rviz -->
+    <node name="rviz" pkg="rviz" type="rviz"
+          args="-d $(find hex_livox_preprocess)/config/ros1/hex_livox_preprocess.rviz" />
+
+</launch>
