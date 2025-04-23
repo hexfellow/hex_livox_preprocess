@@ -11,6 +11,7 @@ This project is licensed under the terms of the Apache License 2.0 - see the [LI
 ### **Maintainer**
 
 **[Dong Zhaorui](https://github.com/IBNBlank)**
+**[Zhang Jianhuai](https://github.com/aalicecc)**
 
 ### **Supported Platform**
 
@@ -66,6 +67,7 @@ This project is licensed under the terms of the Apache License 2.0 - see the [LI
 ### **Dependencies**
 
 - **ROS Noetic** or **ROS Humble**
+- **livox_ros_driver2**
 
 ### **Install**
 
